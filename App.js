@@ -62,17 +62,18 @@ export default function App() {
         </TouchableOpacity>
       )}
       {item.isEditing ? (
-        <TouchableOpacity style={styles.iconButton} onPress={() => saveTask(item.id)}>
+        <TouchableOpacity style={styles.editButton} onPress={() => saveTask(item.id)}>
           <Icon name="save" size={20} color="#0F3050" />
         </TouchableOpacity>
       ) : (
-        <TouchableOpacity style={styles.iconButton} onPress={() => startEditingTask(item.id, item.text, item.isCompleted)}>
+        <TouchableOpacity style={styles.editButton} onPress={() => startEditingTask(item.id, item.text, item.isCompleted)}>
           <Icon name="edit" size={20} color="#0F3050" />
         </TouchableOpacity>
       )}
-      <TouchableOpacity style={styles.iconButton} onPress={() => deleteTask(item.id)}>
+      <TouchableOpacity style={styles.deleteButton} onPress={() => deleteTask(item.id)}>
         <Icon name="trash" size={20} color="#0F3050" />
       </TouchableOpacity>
+
     </View>
   );
 
@@ -157,6 +158,7 @@ const styles = StyleSheet.create({
   },
 
   taskItem: {
+    position: 'relative', 
     flexDirection: 'row',
     alignItems: 'center',
     padding: 18,
@@ -177,13 +179,28 @@ const styles = StyleSheet.create({
   },
 
   iconButton: {
-    marginLeft: 10,
+    position: 'absolute',
+    right: 0, 
+    marginLeft: 15, 
+    padding: 0,
+    borderRadius: 5,
+  },
+
+  deleteButton: {
+    position: 'absolute',
+    right: 14, 
     padding: 3,
     borderRadius: 5,
-    alignItems: 'Left',
-    alignItems: 'right',
-  justifyContent: 'right', 
   },
+
+  editButton: {
+    position: 'absolute',
+    right: 50, 
+    padding: 3,
+    borderRadius: 5,
+  },
+
+  
 
   checkboxContainer: {
     marginRight: 10,
@@ -208,3 +225,4 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
 });
+
